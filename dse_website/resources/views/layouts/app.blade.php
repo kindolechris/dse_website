@@ -9,14 +9,59 @@
 
     <title>{{ config('app.name', 'DSE') }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.toast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{ asset('js/jquery.toast.min.js') }}"></script>
+    <script src="{{ asset('js/gifffer.min.js') }}"></script>
     <style>
+
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            /* The image used */
+
+            /* Full height */
+            height: 100%;
+            opacity: 0.65;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #000;
+        }
+
+        #banner {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transform: translate(-5%, -98%);
+        }
+
+        .caption span.border {
+            background-color: #111;
+            color: #fff;
+            padding: 18px;
+            font-size: 25px;
+            letter-spacing: 6px;
+        }
 
         a {
             color: #6c757d;
@@ -217,6 +262,143 @@
             line-height: 2 !important;
         }
 
+        #banner {
+            height: 300px;
+            width: 300px;
+            background: #161719;
+            overflow: hidden;
+            border: solid 1px rgba(0, 0, 0, 0.2);
+        }
+        #banner a {
+            height: 100%;
+            width: 100%;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            animation: 1s fadein ease-in-out;
+            animation-fill-mode: forwards;
+        }
+        #target {
+            background: url(http://base.webdesignforyou.net/banner/target.png) center center no-repeat;
+            background-size: 100% auto;
+            margin: 0 auto;
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            margin-top: -100px;
+            margin-left: -100px;
+            animation: 20s roty infinite linear;
+        }
+        #product {
+            margin: 30px auto 0 auto;
+            display: block;
+            z-index: 10;
+            width: 150px;
+            position: relative;
+            opacity: 0;
+            animation: 1s growin ease-in-out 1s;
+            animation-fill-mode: forwards;
+        }
+        #button {
+            color: #fff;
+            padding: 8px 15px 8px 15px;
+            font-weight: 700;
+            font-size: 18px;
+            background: #3ba7d1;
+            display: inline-block;
+            margin: 10px 0 0 0;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+            opacity: 0;
+            animation: 1s fadein ease-in-out 2s;
+            animation-fill-mode: forwards;
+        }
+        #sale {
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            z-index: 10;
+        }
+        #sale-text {
+            color: #fff;
+            font-size: 26px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: 1s fadein ease-in-out 1.5s;
+            animation-fill-mode: forwards;
+        }
+        #badge {
+            box-sizing: border-box;
+            color: #fff;
+            padding: 10px 0 0 0;
+            font-weight: 800;
+            font-family: 'Roboto Slab';
+            font-size: 16px;
+            text-align: center;
+            width: 70px;
+            height: 70px;
+            background: #ff9400;
+            border: solid 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            border-radius: 50%;
+            transform: rotate(345deg);
+            animation: 1s fadein ease-in-out;
+            -webkit-transition-delay: 6s;
+            transition-delay: 6s;
+            position: absolute;
+            opacity: 0;
+            transform: rotate(0deg);
+            top: 0px;
+            right: 0px;
+            z-index: 10;
+            animation: 1s rollin ease-in-out 2.5s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes roty {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes rollin {
+            0% {
+                opacity: 0;
+                transform: rotate(0deg);
+                top: 0px;
+                right: 0px;
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(345deg);
+                top: 40px;
+                right: 40px;
+            }
+        }
+        @keyframes growin {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
     </style>
 </head>
 <body style="background-color: #212529;">
@@ -227,8 +409,13 @@
 </div>
 </body>
 <script>
+    window.onload = function() {
+        Gifffer();
+    }
     $(document).ready(function() {
+        //show_toast('')
 
+        {{--show_toast('')--}}
         $('.multi-item-carousel').on('slide.bs.carousel', function (e) {
             let $e = $(e.relatedTarget),
                 itemsPerSlide = 3,
@@ -243,7 +430,6 @@
                 }
             }
         });
-
         $("#nav ul li a[href^='#']").on('click', function(e) {
 
             // prevent default anchor click behavior
@@ -260,7 +446,58 @@
             });
 
         });
-
     });
+    function show_toast(message) {
+        $.toast({
+            // custom message text
+            text: message,
+
+            // custom toast title
+            heading: '',
+
+            // show/hide transition effects.
+            // fade, slide or plain.
+            showHideTransition: 'fade',
+
+            // show a close icon
+            allowToastClose: true,
+
+            // auto hide after a timeout
+            hideAfter: 10000,
+
+            // loader
+            loader: true,
+            loaderBg: '#9EC600',
+
+            // stack length
+            stack: 5,
+
+            // bottom-left, bottom-right, bottom-center,
+            // top-left,top-right
+            // top-center, mid-center
+            // or an object representing the left, right, top, bottom values
+            position: 'bottom-left',
+
+            // background color
+            bgColor: '#444',
+
+            // custom text color
+            textColor: '#eee',
+
+            // custom text align
+            textAlign: 'left',
+
+            // custom icon
+            icon: false,
+
+            // callback functions.
+            beforeShow: function () {},
+            afterShown: function () {},
+            beforeHide: function () {},
+            afterHidden: function () {},
+            onClick: function () {}
+        })
+    }
+
 </script>
 </html>

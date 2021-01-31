@@ -3,7 +3,7 @@
     @include('layouts.navbar-header')
     <div data-spy="scroll" data-target="#navbar" data-offset="0">
     <header>
-        <div class="flex w-full h-100 sm:h-100 md:h-100" style="height: 64vh;">
+        <div class="flex w-full h-100 sm:h-100 md:h-100 bg" style="background-image: url('{{asset('/image/dse_stock.jpg')}}'); height: 64vh;">
                 <a href="#routes" class="rounded-full absolute bottom-0 right-0 m-4 cursor-pointer shadow-lg bg-dark hover:bg-white text-white h-12 w-12 text-center items-center hover:shadow-md">
                     <svg class="mx-auto h-full fill-current text-white flex justify-center items-center" width="14pt" height="14pt" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve">
@@ -40,9 +40,25 @@
                         </g>
 </svg>
                 </a>
-            <div class="centered w-full text-center rounded-sm text-white pl-4 pr-4 pb-3 pt-3">
-                <h2 class="text-white">Dar es salaam stock exchange</h2>
-                <h6 class="text-white text-center">Creating opportunities</h6>
+            <div class="caption">
+                <span class="border">DAR ES SALAAM STOCK EXCHANGE</span>
+                <br>
+                <br>
+                <br>
+                <span class="border">Creating opportunities</span>
+{{--                <h2 class="text-white border">Dar es salaam stock exchange</h2>--}}
+{{--                <h6 class="text-white text-center border">Creating opportunities</h6>--}}
+            </div>
+            <div id="banner">
+                <a href="/">
+                    <div id="target"></div>
+                    <img id="product" src="{{asset('image/kiganjani.png')}}"/>
+                    <div id="badge">New!</div>
+                    <div id="sale">
+                        <span id="sale-text italic">Find out more</span><br/>
+                        <a class="text-xl" href="https://play.google.com/store/apps/details?id=com.maduhu.dseapp" target="_blank"><span id="button">Get it now</span></a>
+                    </div>
+                </a>
             </div>
         </div>
     </header>
