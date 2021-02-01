@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="03b2aaed-e687-438f-8821-7d40534a6269" name="dse_website">
+        <fileTransfer rootFolder="/root/project/dse_website/dse_website" accessType="SFTP" host="41.188.139.70" port="22" sshConfigId="0cfec206-5ab3-4a7d-8444-ce4f7057b9be" sshConfig="root@41.188.139.70:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

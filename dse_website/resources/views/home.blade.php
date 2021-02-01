@@ -55,7 +55,7 @@
                     <img id="product" src="{{asset('image/kiganjani.png')}}"/>
                     <div id="badge">New!</div>
                     <div id="sale">
-                        <span id="sale-text italic">Find out more</span><br/>
+                        <span id="sale-text italic">Easy and fast</span><br/>
                         <a class="text-xl" href="https://play.google.com/store/apps/details?id=com.maduhu.dseapp" target="_blank"><span id="button">Get it now</span></a>
                     </div>
                 </a>
@@ -69,7 +69,6 @@
             </div>
             <div class="flex mt-2 justify-center ">
                 <div class="border-2 border-dark h-1 bg-dark rounded-full w-25">
-
                 </div>
             </div>
         </div>
@@ -138,6 +137,13 @@
                     </a>
                 </div>
             </div>
+        <div class="d-flex justify-content-center mt-4">
+            <div class="">
+                <div class="spinner-grow text-info" role="status">
+                    <span class="sr-only text-white">Loading...</span>
+                </div>
+            </div>
+        </div>
             <hr class="my-5">
         <!-- footer -->
         <footer class="bg-dark">
